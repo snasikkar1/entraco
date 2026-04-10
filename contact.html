@@ -10,7 +10,6 @@
 <section class="page-hero">
   <div class="page-hero-accent"></div>
   <div class="page-hero-inner">
-    <div class="breadcrumb"><a href="index.html">Home</a> / <span>Contact</span></div>
     <h1>Get in <span>Touch</span></h1>
     <p>Request a quote, ask a technical question, or contact our engineering team about your project.</p>
   </div>
@@ -32,11 +31,7 @@
           </div>
           <div style="display:flex;gap:1rem;align-items:flex-start">
             <div style="width:40px;height:40px;background:var(--blue-xs);border:1px solid var(--border);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">✉</div>
-            <div><div style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--red);margin-bottom:4px;font-weight:500">Email</div><div style="font-size:15px;color:var(--muted)"><a href="mailto:info@entracobks.com" style="color:var(--link)">info@entracobks.com</a><br><a href="mailto:sales@entracogroup.com" style="color:var(--link)">sales@entracogroup.com</a></div></div>
-          </div>
-          <div style="display:flex;gap:1rem;align-items:flex-start">
-            <div style="width:40px;height:40px;background:var(--blue-xs);border:1px solid var(--border);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">🌐</div>
-            <div><div style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--red);margin-bottom:4px;font-weight:500">Website</div><div style="font-size:15px"><a href="https://www.entracobks.com" style="color:var(--link)">www.entracobks.com</a></div></div>
+            <div><div style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--red);margin-bottom:4px;font-weight:500">Email</div><div style="font-size:15px;color:var(--muted)"><a href="/cdn-cgi/l/email-protection#51383f373e11343f252330323e333a227f323e3c" style="color:var(--link)"><span class="__cf_email__" data-cfemail="a0c9cec6cfe0c5ced4d2c1c3cfc2cbd38ec3cfcd">[email&#160;protected]</span></a><br><a href="/cdn-cgi/l/email-protection#d7a4b6bbb2a497b2b9a3a5b6b4b8b0a5b8a2a7f9b4b8ba" style="color:var(--link)"><span class="__cf_email__" data-cfemail="f48795989187b4919a808695979b93869b8184da979b99">[email&#160;protected]</span></a></div></div>
           </div>
         </div>
         <div style="margin-top:2rem;padding:1.25rem;background:var(--blue-xs);border:1px solid var(--border);border-radius:3px">
@@ -50,7 +45,9 @@
       <div>
         <div class="section-label">Send a Message</div>
         <h2 class="section-title" style="font-size:clamp(24px,3vw,36px)">Request a <span>Quote</span></h2>
-        <form id="contact-form" style="margin-top:1.5rem">
+        <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="margin-top:1.5rem">
+          <input type="hidden" name="form-name" value="contact">
+          <p style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
           <div class="form-grid">
             <div class="form-group"><label for="fname">First Name *</label><input type="text" id="fname" required placeholder="Your first name"></div>
             <div class="form-group"><label for="lname">Last Name *</label><input type="text" id="lname" required placeholder="Your last name"></div>
@@ -78,9 +75,42 @@
     </div>
   </div>
 </section>
+
 <div id="footer-root"></div>
 <script src="js/components.js"></script>
 <script>document.getElementById('nav-root').innerHTML=getNav('contact');document.getElementById('footer-root').innerHTML=getFooter();</script>
 <script src="js/main.js"></script>
+<script>
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('button[type=submit]');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(this)).toString()
+      })
+      .then(() => {
+        contactForm.innerHTML = `
+          <div style="text-align:center;padding:3rem 1rem">
+            <div style="width:60px;height:60px;background:#d2ffd4;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#00b709" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div style="font-family:var(--font-head);font-size:26px;font-weight:700;text-transform:uppercase;color:var(--blue-dk);margin-bottom:0.5rem">Message Sent!</div>
+            <p style="color:var(--muted);font-size:15px;max-width:380px;margin:0 auto">Thank you for reaching out. Our sales team will get back to you within one business day.</p>
+          </div>`;
+      })
+      .catch(() => {
+        btn.textContent = 'Send Message →';
+        btn.disabled = false;
+        alert('Something went wrong. Please email us at sales@entracobks.com');
+      });
+    });
+  }
+</script>
 </body>
 </html>

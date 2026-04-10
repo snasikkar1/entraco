@@ -9,8 +9,8 @@
   --green:   #00b709;
   --green-dk:#009207;
   --green-lt:#d2ffd4;
-  --red:     #ea0329;
-  --red-dk:  #c50222;
+  --red:     #009207;
+  --red-dk:  #009207;
   --white:   #ffffff;
   --off:     #f7f8fa;
   --text:    #1a2030;
@@ -51,7 +51,7 @@ a.text-link:hover { color: var(--blue-dk); }
 .mobile-menu a:hover { color: var(--green); }
 .mobile-menu .close-btn { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; color: var(--blue); font-size: 32px; cursor: pointer; }
 
-.hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding: 100px 1.5rem 60px; background: var(--white); }
+.hero { min-height: 72vh; display: flex; align-items: center; position: relative; overflow: hidden; padding: 72px 1.5rem 60px; background: var(--white); }
 .hero-bg-shape { position: absolute; right: 0; top: 0; bottom: 0; width: 46%; background: var(--blue-xs); clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%); }
 .hero-inner { position: relative; max-width: var(--max); margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
 .hero-content {}
@@ -70,11 +70,11 @@ a.text-link:hover { color: var(--blue-dk); }
 .btn-outline:hover { background: var(--blue); color: var(--white); }
 .btn-white { background: var(--white); color: var(--blue); }
 .btn-white:hover { background: var(--blue-lt); }
-.hero-stats { display: flex; gap: 2.5rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); flex-wrap: wrap; }
+.hero-stats { display: flex; gap: 2.5rem; margin-top: 1.5rem; padding-top: 2rem; border-top: 1px solid var(--border); flex-wrap: wrap; }
 .stat-item .num { font-family: var(--font-head); font-size: 38px; font-weight: 800; color: var(--blue); line-height: 1; }
 .stat-item .lbl { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 3px; }
 
-.section { padding: 80px 1.5rem; }
+.section { padding: 60px 1.5rem; }
 .section-inner { max-width: var(--max); margin: 0 auto; }
 .section-alt { background: var(--off); }
 .section-blue { background: var(--blue); }
@@ -250,6 +250,70 @@ footer { background: var(--blue-dk); padding: 60px 1.5rem 2rem; }
   .step { grid-template-columns: 56px 1fr; }
   .step-num { font-size: 38px; }
   .value-cards { grid-template-columns: 1fr; }
-  .section { padding: 60px 1.5rem; }
+  .section { padding: 20px 1.5rem; }
   .advantages-grid { grid-template-columns: 1fr; }
+}
+/* ── LOGO SCROLL MARQUEE ── */
+@keyframes slide {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+
+.logos {
+  overflow: hidden;
+  padding: 20px 0;
+  background: var(--white);
+  white-space: nowrap;
+  position: relative;
+  /* fade edges */
+}
+
+.logos::before,
+.logos::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.logos::before {
+  left: 0;
+  background: linear-gradient(to right, var(--white), transparent);
+}
+
+.logos::after {
+  right: 0;
+  background: linear-gradient(to left, var(--white), transparent);
+}
+
+.logos:hover .logos-slide {
+  animation-play-state: paused;
+}
+
+/* Two identical slides sit side-by-side; when the first finishes sliding
+   fully off-screen (-100%) the second seamlessly takes over */
+.logos-slide {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  animation: slide 60s linear infinite;
+  /* will-change keeps the GPU layer active for smooth motion */
+  will-change: transform;
+}
+
+.logos-slide img {
+  height: 64px;
+  width: auto;
+  margin: 0 28px;
+  object-fit: contain;
+  filter: grayscale(1) opacity(0.55);
+  transition: filter 0.2s;
+  flex-shrink: 0;
+}
+
+.logos-slide img:hover {
+  filter: grayscale(0) opacity(1);
 }

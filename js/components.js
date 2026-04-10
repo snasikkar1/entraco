@@ -46,12 +46,12 @@ function getFooter() {
     <div class="footer-col">
       <h4>Products</h4>
       <ul>
-        <li><a href="products/lv-ip68.html">LV IP68 Resin Cast</a></li>
-        <li><a href="products/lv-ip55.html">LV IP55 Sandwich</a></li>
-        <li><a href="products/lighting.html">Lighting Bus Duct</a></li>
-        <li><a href="products/mv-ip68.html">MV IP68 Resin Cast</a></li>
-        <li><a href="products/mv-ip65.html">MV IP65 Isolated Phase</a></li>
-        <li><a href="products/air-insulated.html">Air Insulated</a></li>
+        <li><a href="products/lv-ip68.html">• LV IP68 Resin Cast</a></li>
+        <li><a href="products/lv-ip55.html">• LV IP55 Sandwich</a></li>
+        <li><a href="products/lighting.html">• Lighting Bus Duct</a></li>
+        <li><a href="products/mv-ip68.html">• MV IP68 Resin Cast</a></li>
+        <li><a href="products/mv-ip65.html">• MV IP65 Isolated Phase</a></li>
+        <li><a href="products/air-insulated.html">• Air Insulated</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -59,7 +59,6 @@ function getFooter() {
       <div class="footer-contact-item">📍 A-36/B NICE Area, MIDC Satpur, Nashik-422007, Maharashtra, India</div>
       <div class="footer-contact-item">📞 <a href="tel:+912536698128" style="color:rgba(220,227,238,0.65)">+91 253 6698128 / 123</a></div>
       <div class="footer-contact-item">✉ <a href="mailto:info@entracobks.com" style="color:rgba(220,227,238,0.65)">info@entracobks.com</a></div>
-      <div class="footer-contact-item">🌐 <a href="https://www.entracobks.com" style="color:rgba(220,227,238,0.65)">www.entracobks.com</a></div>
     </div>
   </div>
   <div class="footer-bottom">
