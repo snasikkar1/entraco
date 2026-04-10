@@ -19,6 +19,7 @@
       <div class="hero-btns">
         <a href="contact.html" class="btn btn-primary">Contact Us ↗</a>
         <a href="products.html" class="btn btn-outline">View Products</a>
+        <a href="entracobks_catalogue.pdf" download class="btn btn-outline" style="color:var(--muted);border-color:var(--border)">&#8595; Catalogue PDF</a>
       </div>
       <div class="hero-stats">
         <div class="stat-item"><div class="num">30+</div><div class="lbl">Years Experience</div></div>
@@ -218,6 +219,7 @@
   </div>
 
   <div class="logos" style="margin-top:2.5rem">
+    <div class="logos-track">
     <div class="logos-slide" aria-hidden="true">
         <img src="logos/abb.png" />
         <img src="logos/adani.png" />
@@ -307,8 +309,8 @@
         <img src="logos/vedanta.png" />
         <img src="logos/wipro.png" />
       </div>
-    </div>
-</section>
+    </div><!-- /.logos-track -->
+  </div>
 
 <div class="cta-strip">
   <div style="max-width:680px;margin:0 auto">
@@ -326,5 +328,30 @@
   document.getElementById('footer-root').innerHTML = getFooter();
 </script>
 <script src="js/main.js"></script>
+<script>
+  (function () {
+    var track = document.querySelector('.logos-track');
+    var slide = document.querySelector('.logos-slide');
+    if (!track || !slide) return;
+
+    function setMarquee() {
+      var slideWidth = slide.getBoundingClientRect().width;
+      var gap = 56; // must match the CSS gap on .logos-track
+      var totalShift = slideWidth + gap;
+      var el = document.getElementById('marquee-style');
+      if (!el) { el = document.createElement('style'); el.id = 'marquee-style'; document.head.appendChild(el); }
+      el.textContent = '@keyframes slide { from { transform: translateX(0); } to { transform: translateX(-' + totalShift + 'px); } }';
+      track.style.animation = 'none';
+      track.offsetHeight;
+      track.style.animation = '';
+    }
+
+    if (document.readyState === 'complete') {
+      setMarquee();
+    } else {
+      window.addEventListener('load', setMarquee);
+    }
+  })();
+</script>
 </body>
 </html>

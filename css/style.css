@@ -256,16 +256,14 @@ footer { background: var(--blue-dk); padding: 60px 1.5rem 2rem; }
 /* ── LOGO SCROLL MARQUEE ── */
 @keyframes slide {
   from { transform: translateX(0); }
-  to   { transform: translateX(-100%); }
+  to   { transform: translateX(-50%); } /* overridden by JS with exact px value */
 }
 
 .logos {
   overflow: hidden;
   padding: 20px 0;
   background: var(--white);
-  white-space: nowrap;
   position: relative;
-  /* fade edges */
 }
 
 .logos::before,
@@ -289,31 +287,39 @@ footer { background: var(--blue-dk); padding: 60px 1.5rem 2rem; }
   background: linear-gradient(to left, var(--white), transparent);
 }
 
-.logos:hover .logos-slide {
+.logos:hover .logos-track {
   animation-play-state: paused;
 }
 
-/* Two identical slides sit side-by-side; when the first finishes sliding
-   fully off-screen (-100%) the second seamlessly takes over */
+/* The track holds both slides and is what animates */
+.logos-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 56px; /* space between the last logo of set 1 and first logo of set 2 */
+  animation: slide 60s linear infinite;
+  will-change: transform;
+  white-space: nowrap;
+}
+
+/* Each slide is just a flex row of logos */
 .logos-slide {
   display: inline-flex;
   align-items: center;
-  gap: 0;
-  animation: slide 60s linear infinite;
-  /* will-change keeps the GPU layer active for smooth motion */
-  will-change: transform;
+  gap: 56px;
+  flex-shrink: 0;
 }
 
 .logos-slide img {
   height: 64px;
   width: auto;
-  margin: 0 28px;
   object-fit: contain;
-  filter: grayscale(1) opacity(0.55);
-  transition: filter 0.2s;
+  filter: grayscale(1);
+  opacity: 0.75;
+  transition: filter 0.2s, opacity 0.2s;
   flex-shrink: 0;
 }
 
 .logos-slide img:hover {
-  filter: grayscale(0) opacity(1);
+  filter: grayscale(0);
+  opacity: 1;
 }
