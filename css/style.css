@@ -71,7 +71,7 @@ a.text-link:hover { color: var(--blue-dk); }
 .btn-white { background: var(--white); color: var(--blue); }
 .btn-white:hover { background: var(--blue-lt); }
 .hero-stats { display: flex; gap: 2.5rem; margin-top: 1.5rem; padding-top: 2rem; border-top: 1px solid var(--border); flex-wrap: wrap; }
-.stat-item .num { font-family: var(--font-head); font-size: 38px; font-weight: 800; color: var(--blue); line-height: 1; }
+.stat-item .num { font-family: var(--font-head); font-size: 28px; font-weight: 800; color: var(--blue); line-height: 1; }
 .stat-item .lbl { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 3px; }
 
 .section { padding: 60px 1.5rem; }
