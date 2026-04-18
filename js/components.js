@@ -3,7 +3,7 @@ function getNav(activePage) {
 <nav class="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
-      <img src="https://www.entracobks.com/wp-content/uploads/2018/07/entracologo_blue.png" alt="Entraco BKS" style="height:40px;width:auto">
+      <img src="https://www.entracobks.com/wp-content/uploads/2018/07/entracologo_blue.png" alt="Entraco BKS" style="height:48px;width:auto">
     </a>
     <ul class="nav-links">
       <li><a href="index.html" ${activePage==='home'?'class="active"':''}>Home</a></li>
@@ -56,7 +56,7 @@ function getFooter() {
     </div>
     <div class="footer-col">
       <h4>Contact</h4>
-      <div class="footer-contact-item">📍 A-36/B NICE Area, MIDC Satpur, Nashik-422007, Maharashtra, India</div>
+      <div class="footer-contact-item">📍 A-36/2 NICE, MIDC, Satpur, Nashik-422007, Maharashtra, India</div>
       <div class="footer-contact-item">📞 <a href="tel:+912536698128" style="color:rgba(220,227,238,0.65)">+91 253 6698128 / 123</a></div>
       <div class="footer-contact-item">✉ <a href="mailto:info@entracobks.com" style="color:rgba(220,227,238,0.65)">info@entracobks.com</a></div>
     </div>
